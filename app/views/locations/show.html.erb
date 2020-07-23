@@ -1,0 +1,54 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>License:</strong>
+  <%= @location.license %>
+</p>
+
+<p>
+  <strong>License type:</strong>
+  <%= @location.license_type %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @location.name %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @location.address %>
+</p>
+
+<p>
+  <strong>Phone:</strong>
+  <%= @location.phone %>
+</p>
+
+<p>
+  <strong>Latitude:</strong>
+  <%= @location.latitude %>
+</p>
+
+<p>
+  <strong>Longitude:</strong>
+  <%= @location.longitude %>
+</p>
+
+<p>
+  <strong>Beer:</strong>
+  <%= @location.beer %>
+</p>
+
+<p>
+  <strong>Wine:</strong>
+  <%= @location.wine %>
+</p>
+
+<p>
+  <strong>Liquor:</strong>
+  <%= @location.liquor %>
+</p>
+
+<%= link_to 'Edit', edit_location_path(@location) %> |
+<%= link_to 'Back', locations_path %>
