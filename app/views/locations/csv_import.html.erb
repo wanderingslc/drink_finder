@@ -1,0 +1,19 @@
+<h1>CSV File Import</h1>
+
+<div class="well">
+  <h3>Import new locations</h3>
+  <h4>Important notes</h4>
+  <ol>
+    <li>Add headers. DABC does not include them.</li>
+    <li>Change format to CSV. Google sheets will let you add headers and change formats for free.</li>
+    <li>Upload.</li>
+  </ol>
+  <%= form_tag import_locations_path, multipart: true do %>
+    <div class="form-group">
+      <%= file_field_tag :file%>
+    </div>
+    <div>
+      <%= submit_tag "Import", class: "btn btn-default"%>
+    </div>
+  <% end %>
+</div>

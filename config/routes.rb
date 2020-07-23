@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
-  resources :locations
+  get "/locations/csv_import", to: 'locations#csv_import', as: 'csv_import'
+  resources :locations do 
+    collection do 
+      post :import 
+    end
+  end
+
   root "locations#index"
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  
 end
