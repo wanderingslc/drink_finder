@@ -10,13 +10,8 @@
   </head>
 
   <body class="container">
-  <div class="container">
-  <div class="fa fa-flag"></div>
-  <%= link_to root_path, class: "btn btn-success" do %>
-    <div class="fa fa-flag"></div>
-    Homepage
-    <% end %>
+    <%= render 'layouts/navbar'%>
     <%= yield %>
-    </div>
+    
   </body>
 </html>
