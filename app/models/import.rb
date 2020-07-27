@@ -17,44 +17,73 @@ class Import < ApplicationRecord
       row.delete(nil)
    
       licenseCode = license[0..1]
-
-      if row['license'].include? "BC"
+     
+      case licenseCode
+      when "AL"
+        location.license_type = "Airport Lounge"
+        location.liquor = true 
+        location.wine = true 
         location.beer = true
+        location.heavy_beer = true
+      when "BC"
         location.license_type = "Banquet Catering"
-      end
-      if row['license'].include? 'BE'
+        location.liquor = true 
+        location.wine = true 
         location.beer = true
+        location.heavy_beer = true
+      when "BE" 
         location.license_type = "On Premise Beer"
-      end
+        location.beer = true
+        location.heavy_beer = true
+      when "OP"
+        location.license_type = "Off Premise Beer"
+        location.beer = true
+      when "PS"
+        location.license_type = "Public Service Permit"
 
-      if row['license'].include? 'CL'
-        location.liquor = true
+      when "RB"
+        location.license_type = "Restaurant(Beer Only"
+        location.beer = true
+      when "TV"
+        location.license_type = "Tavern"
+        location.beer = true
+      when "CL"
         location.license_type = "Private Club"
-      end
-
-      if row['license'].include? 'PS'
-        location.beer = true
-        location.license_type = 'Public Service Permit'
-      end
-
-      if row['license'].include? 'RB'
-        location.beer = true
-        location.license_type = 'Restaurant - Beer Only'
-      end
-
-      if row['license'].include? 'RL'
-        location.wine = true
-        location.license_type = 'Restaurant - Limited Service'
-      end
-
-      if row['license'].include? 'RE'
+        location.beer = true 
+        location.heavy_beer = true 
+        location.wine = true 
         location.liquor = true
-        location.license_type = 'Restaurant - Full Service'
-      end
-
-      if row['license'].include? 'TV'
+      when "RE"
+        location.license_type = "Restaurant(Full Service)"
+        location.beer = true 
+        location.heavy_beer = true 
+        location.wine = true 
+        location.liquor = true
+      when "RL"
+        location.license_type = "Restaurant(Limited Service)"
+        location.beer = true 
+        location.heavy_beer = true 
+        location.wine = true
+      when "LR"
+        location.license_type = "Restaurant(Full Service)"
+        location.beer = true 
+        location.heavy_beer = true 
+        location.wine = true 
+        location.liquor = true 
+      when "LB" 
+        location.license_type = "Bar Establishment"
+        location.liquor = true 
+        location.wine = true 
         location.beer = true
-        location.license_type = 'Tavern'
+        location.heavy_beer = true
+      when "HL"
+        location.license_type = "Hotel"
+        location.liquor = true 
+        location.wine = true 
+        location.beer = true
+        location.heavy_beer = true
+      else 
+        location.license_type = "Not Listed"
       end
 
       location.license = row["license"]

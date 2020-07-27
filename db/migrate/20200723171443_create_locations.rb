@@ -8,9 +8,10 @@ class CreateLocations < ActiveRecord::Migration[6.0]
       t.string :phone
       t.float :latitude
       t.float :longitude
-      t.boolean :beer
-      t.boolean :wine
-      t.boolean :liquor
+      t.boolean :beer, default: false
+      t.boolean :heavy_beer, default: false
+      t.boolean :wine, default: false
+      t.boolean :liquor, default: false
 
       t.timestamps
     end

@@ -23,9 +23,10 @@ ActiveRecord::Schema.define(version: 2020_07_23_171443) do
     t.string "phone"
     t.float "latitude"
     t.float "longitude"
-    t.boolean "beer"
-    t.boolean "wine"
-    t.boolean "liquor"
+    t.boolean "beer", default: false
+    t.boolean "heavy_beer", default: false
+    t.boolean "wine", default: false
+    t.boolean "liquor", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
