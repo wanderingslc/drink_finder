@@ -1,5 +1,7 @@
 class LocationsController < ApplicationController
   before_action :set_location, only: [:show, :edit, :update, :destroy]
+  include SmartListing::Helper::ControllerExtensions 
+  include SmartListing::Helper 
 
   def index
     @locations = Location.all
