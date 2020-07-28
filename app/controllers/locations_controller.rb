@@ -1,10 +1,18 @@
 class LocationsController < ApplicationController
   before_action :set_location, only: [:show, :edit, :update, :destroy]
   include SmartListing::Helper::ControllerExtensions 
-  include SmartListing::Helper 
+  helper SmartListing::Helper 
 
   def index
-    @locations = Location.all
+    scope = Location.all 
+    options = {}
+    options = options.merge(query: params[:filter]) if params[:filter].present?
+    options = options.merge(filters: params[:f]) if params[:f].present?
+    scope = Location.all_with_filter(options, scope)
+    if params[:locations_smart_listing] && params[:locations_smart_listing][:page].blank? 
+      params[:locations_smart_listing][:page] = 1
+    end
+    @locations = smart_listing_create :locations, scope, partial: "locations/list"
   end
 
   def show
@@ -56,6 +64,11 @@ class LocationsController < ApplicationController
   def import 
     Location.import(params[:file])
     redirect_to locations_new_path, notice: "Locations Imported"
+  end
+
+  def get_locations 
+    locations = Location.all 
+    render json: locations.to_json
   end
 
   private
