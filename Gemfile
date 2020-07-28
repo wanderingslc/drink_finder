@@ -34,6 +34,8 @@ gem 'simple_form'
 gem 'roo', '~> 2.8.0'
 gem 'faker', '~> 2.13'
 gem 'smart_listing'
+gem 'geocoder'
+gem 'figaro'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

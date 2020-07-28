@@ -1,4 +1,6 @@
 class Location < ApplicationRecord
+  geocoded_by :street_address 
+  reverse_geocoded_by :latitude, :longitude 
 
   def street_address 
     "#{address['street_address']} #{address['city']} #{address['zip']}"
