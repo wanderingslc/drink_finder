@@ -12,10 +12,11 @@ class LocationsController < ApplicationController
     if params[:locations_smart_listing] && params[:locations_smart_listing][:page].blank? 
       params[:locations_smart_listing][:page] = 1
     end
-    @locations = smart_listing_create :locations, scope, partial: "locations/list"
+    @locations = smart_listing_create :locations, scope, partial: "locations/list", page_sizes: [10, 25, 50, 100, 250, 500]
   end
 
   def show
+    
   end
 
   def new

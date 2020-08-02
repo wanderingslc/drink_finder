@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'home/index'
   get 'bring/index'
   get "/locations/csv_import", to: 'locations#csv_import', as: 'csv_import'
   resources :locations do 
@@ -13,6 +14,6 @@ Rails.application.routes.draw do
   end
   get 'import/index'
 
-  root "locations#index"
+  root "home#index"
   
 end
